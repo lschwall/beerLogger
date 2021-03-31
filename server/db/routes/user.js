@@ -97,12 +97,12 @@ userRouter.post('/login', validInfo, async (req, res) => {
           //           password,
           // } = req.body.params;
           const {
-                    email,
+                    username,
                     password,
           } = req.body;
 
           const loginPass = password;
-          User.findAll({ where: { email } })
+          User.findAll({ where: { user_name: username } })
                     .then((user) => {
                               if (user.length > 0) {
                                         const uPassword = user[0].user_password;

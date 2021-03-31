@@ -1,10 +1,10 @@
 module.exports = (req, res, next) => {
           // const { email, username, password } = req.body.params;
-          const { email, username, password } = req.body; // use for testing postman
+          const { username, password } = req.body; // use for testing postman
 
-          function validEmail(userEmail) {
-                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
-          }
+          // function validEmail(userEmail) {
+          //           return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
+          // }
 
           if (req.path === '/register') {
                     console.info(!email.length);
@@ -14,11 +14,12 @@ module.exports = (req, res, next) => {
                               return res.json('Invalid Email');
                     }
           } else if (req.path === '/login') {
-                    if (![email, password].every(Boolean)) {
+                    if (![username, password].every(Boolean)) {
                               return res.json('Missing Credentials');
-                    } if (!validEmail(email)) {
-                              return res.json('Invalid Email');
                     }
+                    // if (!validEmail(email)) {
+                    //           return res.json('Invalid Email');
+                    // }
           }
 
           next();
