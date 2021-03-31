@@ -20,11 +20,14 @@ const sequelize = new Sequelize(
 );
 
 const BeerModel = require('./beer');
+const UserModel = require('./user')
 
 const Beer = BeerModel(sequelize, Sequelize);
+const User = UserModel(sequelize, Sequelize);
 
 const models = {
-    Beer
+    Beer,
+    User
 };
 
 Object.keys(models).forEach((model) => {
