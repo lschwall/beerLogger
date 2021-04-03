@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Landing from './Home/Landing.jsx';
+import Landing from './Landing/Landing.jsx';
 import Signup from './Authentication/Signup.jsx';
 import Login from './Authentication/Login.jsx';
-import '../Styles/styles.scss';
-
+import Home from './Home/Home.jsx';
 
 const App = () => {
     return (
-
         <Router>
             <Switch>
                 <Route exact path="/">
@@ -19,6 +17,9 @@ const App = () => {
                 </Route>
                 <Route path="/login">
                     <Login />
+                </Route>
+                <Route path="/home">
+                    <Home />
                 </Route>
             </Switch>
         </Router>

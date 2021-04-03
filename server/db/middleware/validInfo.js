@@ -1,10 +1,10 @@
 module.exports = (req, res, next) => {
           // const { email, username, password } = req.body.params;
-          const { username, password } = req.body; // use for testing postman
+          const { email, username, password } = req.body; // use for testing postman
 
-          // function validEmail(userEmail) {
-          //           return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
-          // }
+          const validEmail = (userEmail) => {
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
+          }
 
           if (req.path === '/register') {
                     console.info(!email.length);
