@@ -8,6 +8,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         review: {
             type: DataTypes.TEXT,
+        },
+        score: {
+            type: DataTypes.INTEGER,
+        },
+        image: {
+            type: DataTypes.TEXT,
         }
     }, {
         freezeTableName: true,

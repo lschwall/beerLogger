@@ -1,8 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom';
 import './landing.scss'
 
 const Landing = () => {
+          const history = useHistory()
+          useEffect(() => {
+                    if (!localStorage.token) {
+                              return;
+                    }
+                    history.push('/home')
+          })
           return (
                     <div>
                               <div className="parent">

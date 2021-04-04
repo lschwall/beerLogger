@@ -7,17 +7,20 @@ const Login = () => {
           const history = useHistory();
           const [username, setUsername] = useState('');
           const [password, setPass] = useState('');
+
           // handles all login functionality
-          /*
-          Reminder to store token inside of local session for easy login on load
-           */
           const params = { username, password }
           const handleLoginCredentials = () => {
                     axios.post(`/user/login`, params)
                               .then(({ data }) => {
-                                        let token = data
-                                        localStorage.setItem('token', token)
-                                        history.push('/home')
+                                        if (data === 'non-user') {
+                                                  window.alert('Please Register')
+                                                  history.push('/signup')
+                                        } else {
+                                                  let token = data
+                                                  localStorage.setItem('token', token)
+                                                  history.push('/home')
+                                        }
                               })
                               .catch(err => console.warn(err))
           }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import Logout from '../Authentication/Logout.jsx';
+import Review from '../Inputs/Review.jsx';
 
 const Home = () => {
 
@@ -8,6 +8,7 @@ const Home = () => {
                     <div>
                               Welcome to the home page
                               <Logout />
+                              <Review />
                     </div>
           )
 }

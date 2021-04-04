@@ -5,6 +5,7 @@ create table 'beer' (
     "beer_name" VARCHAR(255)
     "brewery_name" VARCHAR(255)
     "review" VARCHAR(1000)
+    "score" INTEGER
     "image" VARCHAR(1000)
 )
 

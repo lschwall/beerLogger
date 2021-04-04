@@ -97,9 +97,10 @@ userRouter.post('/login', validInfo, async (req, res) => {
         const uEmail = user[0].email;
         validatePassword(loginPass, uPassword, res, uEmail);
       } else {
-        res.status(401).send('incorrect');
+        res.send('non-user');
       }
-    });
+    })
+    .catch(err => console.warn(err))
 });
 
 userRouter.post('/is-verify', authorization, async (req, res) => {
