@@ -1,93 +1,121 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import user from '../../../server/db/models/user';
+import './styles/signup.scss'
 
 //first_name, last_name, user_name, user_password, email
 
 const Signup = () => {
-          const history = useHistory();
-          const [first, setFirst] = useState('');
-          const [last, setLast] = useState('');
-          const [username, setUsername] = useState('');
-          const [password, setPass] = useState('');
-          const [email, setEmail] = useState('');
+    const history = useHistory();
+    const [first, setFirst] = useState(null);
+    const [last, setLast] = useState(null);
+    const [username, setUsername] = useState(null);
+    const [password, setPass] = useState(null);
+    const [email, setEmail] = useState(null);
 
-          const showPassword = () => {
-                    var x = document.getElementById("password");
-                    if (x.type === "password") {
-                              x.type = "text";
-                    } else {
-                              x.type = "password";
-                    }
-          }
+    const showPassword = () => {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
 
-          const params = {
-                    firstName: first,
-                    lastName: last,
-                    password,
-                    email,
-                    username
-          }
-          const handleRegistration = () => {
-                    axios.post('/user/register', params)
-                              .then(({ data }) => {
-                                        let token = data.token
-                                        localStorage.setItem('token', token)
-                                        history.push('/home')
-                              })
-                              .catch(err => console.warn(err))
-          }
+    const params = {
+        firstName: first,
+        lastName: last,
+        password,
+        email,
+        username
+    }
 
-          return (
-                    <div>
-                              <div>
-                                        <label htmlFor="first">Enter first name</label>
-                                        <input
-                                                  placeholder="First Name"
-                                                  onChange={(e) => { setFirst(e.target.value) }}
-                                                  id="first"
-                                        />
-                              </div>
-                              <div>
-                                        <label htmlFor="last">Enter last name</label>
-                                        <input
-                                                  placeholder="Last Name"
-                                                  onChange={(e) => { setLast(e.target.value) }}
-                                                  id="last"
-                                        />
-                              </div>
-                              <div>
-                                        <label htmlFor="username">Enter a username (be creative!)</label>
-                                        <input
-                                                  placeholder="Username"
-                                                  onChange={(e) => { setUsername(e.target.value) }}
-                                                  id="username"
-                                        />
-                              </div>
-                              <div>
-                                        <label htmlFor="password">Enter Password (8 characters minimum)</label>
-                                        <input
-                                                  placeholder="Password"
-                                                  onChange={(e) => { setPass(e.target.value) }}
-                                                  id="password"
-                                                  type="password"
-                                        />
-                                        <input type="checkbox" onClick={showPassword} />Show Password
-                              </div>
-                              <div>
-                                        <label htmlFor="email">Enter valid email</label>
-                                        <input
-                                                  placeholder="Email"
-                                                  onChange={(e) => { setEmail(e.target.value) }}
-                                                  id="email"
-                                        />
-                              </div>
-                              <button onClick={handleRegistration}>
-                                        Register
-                              </button>
-                    </div>
-          )
+    const handleCredentialsChecker = () => {
+        for (let p in params) {
+            if (p.value === null) {
+                window.alert('missing item')
+            } else {
+                handleRegistration();
+            }
+        }
+    }
+
+    const handleRegistration = () => {
+        axios.post('/user/register', params)
+            .then(({ data }) => {
+                let token = data.token
+                localStorage.setItem('token', token)
+                history.push('/home')
+            })
+            .catch(err => console.warn(err))
+    }
+
+    return (
+        <div className="signup">
+            <h1>
+                Sign up for Recipe Manager
+            </h1>
+            <p>
+                <input
+                    type="text"
+                    placeholder="First Name"
+                    onChange={(e) => { setFirst(e.target.value) }}
+                    id="first"
+                    required
+                />
+            </p>
+            <p>
+                <input
+                    type="text"
+                    placeholder="Last Name"
+                    onChange={(e) => { setLast(e.target.value) }}
+                    id="last"
+                    required
+                />
+            </p>
+            <p>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    onChange={(e) => { setUsername(e.target.value) }}
+                    id="username"
+                    required
+                />
+            </p>
+            <p id="flex-paragraph">
+                <input
+                    type="text"
+                    placeholder="Password"
+                    onChange={(e) => { setPass(e.target.value) }}
+                    id="password"
+                    required
+                />
+                {/* <input type="checkbox" onClick={showPassword} /> */}
+            </p>
+            <p>
+                <input
+                    type="text"
+                    placeholder="Email"
+                    onChange={(e) => { setEmail(e.target.value) }}
+                    id="email"
+                    required
+                />
+            </p>
+            <p className="submit">
+                <input
+                    type="submit"
+                    name="commit"
+                    value="Sign up"
+                    onClick={handleRegistration}
+                />
+            </p>
+            <p className="login-option">
+                <Link to="/login">
+                    Already have an account?
+                </Link>
+            </p>
+        </div>
+    )
 }
 
 export default Signup

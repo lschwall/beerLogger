@@ -19,14 +19,14 @@ const sequelize = new Sequelize(
     }
 );
 
-const BeerModel = require('./beer');
+const RecipeModel = require('./recipe');
 const UserModel = require('./user')
 
-const Beer = BeerModel(sequelize, Sequelize);
+const Recipe = RecipeModel(sequelize, Sequelize);
 const User = UserModel(sequelize, Sequelize);
 
 const models = {
-    Beer,
+    Recipe,
     User
 };
 
