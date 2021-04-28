@@ -22,12 +22,12 @@ app.get('/', (req, res) => {
 const models = require('./db/models/index')
 
 /* Routes */
-const { bRouter } = require('./db/routes/Beer')
+const { recipeRouter } = require('./db/routes/Beer')
 const { userRouter } = require('./db/routes/user');
 
 /* END POINTS */
 
-app.use('/beer', bRouter)
+app.use('/recipes', recipeRouter)
 app.use('/user', userRouter);
 
 

@@ -1,16 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
-    const Beer = sequelize.define('beer', {
-        beer_label: {
+    const Recipe = sequelize.define('recipe', {
+        recipe_name: {
             type: DataTypes.TEXT,
         },
-        beer_brewery: {
+        cook_time: {
             type: DataTypes.TEXT,
         },
-        review: {
+        servings: {
             type: DataTypes.TEXT,
-        },
-        score: {
-            type: DataTypes.INTEGER,
         },
         image: {
             type: DataTypes.TEXT,
@@ -19,5 +16,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
     });
 
-    return Beer;
+    return Recipe;
 };

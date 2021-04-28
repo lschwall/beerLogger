@@ -1,20 +1,20 @@
-const { Beer } = require('../models/index')
+const { Recipe } = require('../models/index')
 const { Router } = require('express');
-const bRouter = Router();
+const recipeRouter = Router();
 
-bRouter.get('/', (req, res) => {
+recipeRouter.get('/', (req, res) => {
     res.send('SUCCESS GET')
 })
-bRouter.post('/', (req, res) => {
+recipeRouter.post('/', (req, res) => {
     res.send('SUCCESS POST')
 })
-bRouter.put('/', (req, res) => {
+recipeRouter.put('/', (req, res) => {
     res.send('SUCCESS PUT')
 })
-bRouter.delete('/', (req, res) => {
+recipeRouter.delete('/', (req, res) => {
     res.send('SUCCESS DELETE')
 })
 
 module.exports = {
-    bRouter
+    recipeRouter
 }
