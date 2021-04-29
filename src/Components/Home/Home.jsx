@@ -1,16 +1,16 @@
 import React from 'react';
 import Logout from '../Authentication/Logout.jsx';
-import Review from '../Inputs/Review.jsx';
+import Recipe from '../Inputs/Recipe.jsx';
 
 const Home = () => {
 
-          return (
-                    <div>
-                              Welcome to the home page
-                              <Logout />
-                              <Review />
-                    </div>
-          )
+    return (
+        <div>
+            Welcome to the home page
+            <Logout />
+            <Recipe />
+        </div>
+    )
 }
 
 export default Home
